@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      p{
+        font-size: 1rem;
+        font-family: 'Century Gothic';
+        margin: 10px;
+      }
+      #map {
+        height: 70%;
+        width:80%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel { /*buttons*/
+        position: absolute;
+        height: 5%;
+        width: 20%;
+        text-align: center;
+        left: 80%;
+        z-index: 5;
+        background-color: white;
+        text-align: center;
+        font-family: 'Century Gothic';
+        line-height: 10px;
+        padding-left: 5px;
+      }
+      body {
+        background-color: White;
+        font-family: 'Century Gothic';
+        font-size: 20px;
+        color: #008577;
+        margin: 35px
+      }
+      nav {
+        position:relative;
+        padding: 10px 20px 10px 20px;
+        text-align: right;
+        z-index:1;
+        background-color: White;
+        margin: 0 auto;
+        width: calc(100%-60px);
+        font-family: 'Century Gothic';
+        position: sticky;
+        top: 0;
+      }
+      .menuArea li {
+        list-style: none;
+        display: inline-block;
+        font-family: 'Century Gothic';
+        margin: auto;
+      }
+      .menuArea li a {
+        text-decoration: none;
+        color: White;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        display: block;
+        padding: 0 25px;
+        font-size: 14px;
+        line-height:30px;
+        position: relative;
+      }
+      .menuArea li a:hover {
+        background:Black;
+        color:#008577;
+      }
+      #h1 {
+        text-align: center;
+        color: #008577;
+        display:block;
+        margin-right:auto;
+        margin-left:auto;
+        margin-bottom: 50px;
+        font-family:'Century Gothic';
+      }
+      #h2 {
+        text-align:center;
+        color: #008577;
+        font-family:'Century Gothic';
+        font-size: 25px
+      }
+      #h3 {
+        color: #008577;
+        font-family:'Century Gothic';
+        font-size: 22px
+      }
+
+      #bar nav {
+        font: 12px/30px Helvetica, sans-serif;
+        text-align: center;
+        background: #6fcbf3;
+        color: black;
+        margin-right: 30px;
+        width: 30px;
+        height: 30px;
+        float: left;
+        text-decoration: none;
+        visibility:visible;
+      }
+      #bar nav a {
+        background: #6fcbf3;
+        color: black;
+        margin-right: 30px;
+        width: 30px;
+        height: 30px;
+        float: left;
+        text-decoration: none;
+        visibilty:visible;
+        -webkit-transition: all 0.5s ease;
+      }
+      #bar nav a:hover {
+        background: #6fcbf3;
+      }
+      div {
+        height: 400px;
+        width: 50%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav id="uppp">
+      <ul class="menuArea">
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/boom.html"style="color:#008577;"target="_blank">Map</a></li>
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/rights.html"style="color:#008577;"target="_blank">About Us</a></li>
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/new.html"style="color:#008577;"target="_blank">Rights</a></li>
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/organizations.html"style="color:#008577;"target="_blank">Organizations</a></li>
+      </ul>
+    </nav>
+  </body>
+  <body>
+    <center>
+      <img src = "https://pbs.twimg.com/media/ECayHopUEAAPdcK?format=jpg&name=small" style="width:250px;height:200px">
+    </center>
+    <h1 id="h1">Helping Homelessness NYC</h1>
+    <h1 id = "h1">Interactive Map</h1>
+    <center>
+      <h2 id="h2">This is an interactive map that helps you find the best free wifi centers, soup kitchens, and homeless shelters in Manhattan.</h2>
+    </center>
+
+      <div id="floating-panel">
+        <input onclick="showMarkers();" type=button value="Homeless Shelters">
+        <input onclick="showMarkersTwo();" type=button value="Free Wifi Spots">
+        <input onclick="showMarkersThree();" type=button value="Soup Kitchens">
+        <input onclick="showAll();" type=button value="All">
+      </div>
+      <div id="map"></div>
+</body>
+<head>
+      <div style = "display:none; float: right" id="infoOne">
+        <p>
+          <h2> Womens Shelters</h2>
+              <a href="https://www.lenoxhill.org/wmhsparkavearmory/" target = "_blank">Lenox Hill Neighborhood House Women’s Mental Health Shelter <!-- done -->
+              </a> <br>
+              643 Park Ave, New York, NY 10065
+              <br>
+              <br>
+              <a href="https://www.ncsinc.org/" target = "_blank">Neighborhood Coalition for Shelter <!-- done -->
+              </a> <br>
+              921 Madison Ave, New York, NY 10021
+              <br>
+              <br>
+              <a href="http://www.wsfssh.org/buildings/valley-lodge/" target = "_blank"> Valley Lodge <!-- done -->
+              </a> <br>
+              340 W 85th St, New York, NY 10025
+              <br>
+              <br>
+              <a href="https://www.mapquest.com/us/new-york/jennie-clark-residence-1212685" target = "_blank"> Jennie Clark Residence <!-- done -->
+              </a> <br>
+              183 E 100th St, New York, NY 10029
+              <br>
+              <br>
+              <a href="http://www.projectrenewal.org/" target = "_blank"> Project Renewal New Providence Women's Shelter <!-- done -->
+              </a> <br>
+              225 E 45th St, New York, NY 10017
+              <br>
+              <br>
+          <h2 >Mens Shelters</h2>
+              <a href="https://www.bowery.org/" target = "_blank"> The Bowery Mission <!-- done -->
+              </a> <br>
+              227 Bowery, New York, NY 10002
+              <br>
+              <br>
+              <a href="http://www.projectrenewal.org/" target = "_blank"> Project Renewal 3rd Street Men's Shelter <!-- done -->
+              </a> <br>
+              8 East 3rd St. #8908, New York, NY 10003
+              <br>
+              <br>
+              <a href="https://www1.nyc.gov/" target = "_blank"> HRA Men's Shelter <!-- done -->
+              </a> <br>
+              400 Easr 30th St, New York, NY 10016
+              <br>
+              <br>
+          <h2>Both</h2>
+              <a href="http://www.projectrenewal.org/" target = "_blank">Project Renewal Clinton Residence <!-- done -->
+              </a><br>
+              448 W 48th St, New York, NY 10036
+              <br>
+              <br>
+              <a href="http://www.nyc.gov/html/mancb10/downloads/pdf/resources/Manhattan_Community_Board_10_Housing_Guide.pdf" target = "_blank">Parkview <!-- done -->
+              </a><br>
+              55 W 110th St, New York, NY 10026
+              <br>
+              <br>
+              <a href="https://www1.nyc.gov/site/dhs/about/palladia.page" target = "_blank">Palladia, Inc - Home Base <!-- done -->
+              </a><br>
+              2276 Third Ave, New York, NY 10029
+              <br>
+              <br>
+              <a href="https://www.mapquest.com/us/new-york/services-for-the-underserved-380001227" target = "_blank">Palladia, Inc - 126th St Shelter <!-- done -->
+              </a><br>
+              35 W 126th St, New York, NY 10027
+              <br>
+              <br>
+              <a href="https://www1.nyc.gov/site/dhs/about/palladia.page" target = "_blank">Palladia <!-- done -->
+              </a><br>
+              205 W 135th St, New York, NY 10030
+              <br>
+              <br>
+              <a href="https://www.yelp.com/search?find_desc=Homeless+Shelter&find_loc=Adam+Clayton+Powell+Jr+Blvd%2C+New+York%2C+NY" target = "_blank">Adam Clayton Powell Jr. Homeless Shelter <!-- done -->
+              </a><br>
+              2332 Adam Clayton Powell Jr Blvd, New York, NY 10030
+              <br>
+              <br>
+              <a href="http://whgainc.org/?option=com_content&view=article&id=79&Itemid=71" target = "_blank">West Harlem Residence <!-- done -->
+              </a><br>
+              138 W 143rd St, New York, NY 10030
+        </p>
+      </div>
+      <div style = "display:none" id="infoTwo">
+          <p style = "float: left">
+            <h2>Free Wifi Spots</h2>
+            <a href="" target="_blank"> Link NYC <!-- done -->
+            </a> <br>
+            1694 3rd Ave, New York, NY 10128
+            <br>
+            <br>
+            <a href="" target="_blank"> Link NYC <!-- done -->
+            </a> <br>
+            206 E 57th St. New York, NY 10022
+            <br>
+            <br>
+            <a href="" target="_blank"> Link NYC <!-- done -->
+            </a> <br>
+            801-819 Amsterdam Ave New York, NY 10025
+            <br>
+            <br>
+            <a href="" target="_blank"> Link NYC <!-- done -->
+            </a> <br>
+            8th Ave & West 58th St New York, NY 10019
+            <br>
+            <br>
+            <a href="" target="_blank"> Link NYC <!-- done -->
+            </a> <br>
+            392 2nd Ave New York, NY 10010
+            <br>
+            <br>
+            <a href="" target="_blank"> Link NYC <!-- done -->
+            </a> <br>
+            254 West 14th St New York, NY 10011
+            <br>
+            <br>
+          </p>
+      </div>
+      <div style = "display:none" id="infoThree">
+        <p style = "float: left">
+          <h2>
+          <br>
+          <br>
+            Soup Kitchens</h2>
+          <a href="https://holyapostlessoupkitchen.org/volunteer/?gclid=Cj0KCQjwy97qBRDoARIsAITONTLKX49Qp4Pj-Z1B4NBseIrBXsUJLm9a259whC4FXke-DIVrBMPzlskaAvzSEALw_wcB" target="_blank">
+            Holy Apostles Soup Kitchen </a> <br> <!-- done -->
+            296 9th Ave, New York, NY 10001 <br>
+            10:30- 12:30PM All WEEKDAYS <br>
+            <br>
+            <br>
+          <a href="https://sjsk.nyc/" target="_blank">
+            St. Joe’s Soup Kitchen </a> <br> <!-- done -->
+           371 6th Ave, New York, NY 10014 <br>
+           1:30-3PM SATURDAYS <br>
+           <br>
+           <br>
+          <a href="https://www.foodbanknyc.org/" target="_blank">
+           Food Bank For New York City - Community Kitchen & Food Pantry </a> <br>
+           252 W 116th St, New York, NY 10026 <br> <!-- done -->
+           9AM-6PM ALL WEEKDAYS <br>
+           <br>
+           <br>
+          <a href="http://nycrescue.org/learn/about-us" target="_blank">
+           New York City Rescue Mission </a> <br> <!-- done -->
+           90 Lafayette St, New York, NY 10013 <br>
+           OPEN 24 HOURS ALL DAY <br>
+           <br>
+           <br>
+          <a href="https://www.mapquest.com/us/new-york/community-kitchen-of-west-harlem-354213132" target="_blank">
+           Community Kitchen-West Harlem </a> <br> <!-- done -->
+           252 W 116th St, New York, NY 10026 <br>
+           10AM - 6PM ALL WEEKDAYS <br>
+          <br>
+          <br>
+          <br>
+          <br>
+       </p>
+      </div>
+</head>
+    <script>
+
+      // In the following example, markers appear when the user clicks on the map.
+      // The markers are stored in an array.
+      // The user can then click an option to hide, show or delete the markers.
+      var map;
+      var markers = []; //homeless shelters
+      var markersTwo =[]; //free wifi places
+      var markersThree =[]; //Soup Kitchens
+
+      function initMap() {
+        var haightAshbury = {lat:40.764473,lng:-73.978565};
+        // var hsTwo = {lat:40., lng:-73.};
+        // var hsOne = {lat:40., lng: -73.};
+        // var hsThree = {lat:40., lng:-73.};
+        // var hsFour = {lat:40., lng: -73.};
+        // var hsFive = {lat:40., lng: -73.};
+        // var hsSix = {lat:40., lng: -73.};
+        // var hsSeven = {lat:40., lng: -73.};
+        var hsEight = {lat:40.7672333, lng:73.9655036}; //Womens - Lenox Hill Neighborhood House Women’s Mental Health Shelter
+        var hsNine = {lat:40.7724975, lng:-73.9645388}; //womens-Neighborhood Coalition for Shelter
+        var hsTen = {lat: 40.7886334, lng: - 73.9799084}; // womens-Valley Lodge
+        var hsEleven = {lat: 40.7882368,lng: -73.9483461}; // womens-Jennie Clark Residence
+        var hsTwelve = {lat: 40.7630828, lng: -73.9921313}; //all - Project Renewal Clinton Residence
+        var hsThirteen = {lat:40.7671052, lng: -73.6737156}; //not in Manhattan all- parkview
+        var hsFourteen = {lat: 40.8029016, lng: -73.9366225}; // all - Palladia, Inc - Home Base
+        var hsFifteen = {lat: 40.8078557, lng: -73.9430477}; //all - Palladia, Inc - 126th St Shelter
+        var hsSixteen = {lat: 40.815819, lng: -73.9441964}; //all - Palladia
+        var hsSeventeen = {lat:40.8165978, lng: -73.943084}; // all-Adam Clayton Powell Jr. Homeless Shelter
+        var hsEighteen = {lat:40.8196957, lng: -73.9391386}; //all-West Harlem Residence
+        var hsNineteen = {lat: 40.721958, lng:-73.992798}; // men - the bowery Mission
+        var hsTwenty = {lat: 40.7258735, lng: -73.9911478}; //men-Project Renewal 3rd st
+        var hsTwentyone = {lat:40.7406552, lng: -73.9743817}; //man-HRA man's shelter
+        var hsTwentytwo = {lat:40.7524886, lng: -73.9720829}; //womens-Project Renewal New Providence womens shelter
+
+        var wifiOne = {lat:40.785080, lng:-73.950340}; //done
+        var wifiTwo = {lat:40.758970, lng:-73.964510}; //done
+        var wifiThree = {lat:40.796090, lng:-73.968520}; //done
+        var wifiFour = {lat:40.767410, lng:-73.982410}; //done
+        var wifiFive = {lat:40.737440, lng:-73.9810}; //done
+        var wifiSix = {lat:40.739470, lng:-73.002240}; //done not in Manhattan
+
+        var sOne = {lat:40.7493539, lng: -73.998973}; // holy apostles soup kitchen
+        var sTwo = {lat:40.7327917,lng:-74.0006602 }; //St. Joe's Soup Kitchen
+        var sThree = {lat:40.8038889,lng:-73.955}; //SAMEFoof Bank For New York City - Community Kitchen & Food Pantry
+        var sFour = {lat:40.7175176,lng:-74.0015609}; //New York City Rescue Mission
+        var sFive = {lat:40.8038889,lng:-73.955} //SAMECommunity Kitchen-West Harlem
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: haightAshbury,
+          mapTypeId: 'terrain'
+        });
+
+        // This event listener will call addMarker() when the map is clicked.
+        map.addListener('click', function(event) {
+          addMarker(event.latLng);
+        });
+
+        // Adds a marker at the center of the map.
+        addMarker(hsEight);
+        addMarker(hsNine);
+        addMarker(hsTen);
+        addMarker(hsEleven);
+        addMarker(hsTwelve);
+        addMarker(hsThirteen); //not in Manhattan
+        addMarker(hsFourteen);
+        addMarker(hsFifteen);
+        addMarker(hsSixteen);
+        addMarker(hsSeventeen);
+        addMarker(hsEighteen);
+        addMarker(hsNineteen);
+        addMarker(hsTwenty);
+        addMarker(hsTwentyone);
+        addMarker(hsTwentytwo);
+
+        addMarkerTwo(wifiOne);
+        addMarkerTwo(wifiTwo);
+        addMarkerTwo(wifiThree);
+        addMarkerTwo(wifiFour);
+        addMarkerTwo(wifiFive);
+        addMarkerTwo(wifiSix); // not in Manhattan
+
+        addMarkerThree(sOne);
+        addMarkerThree(sTwo);
+        addMarkerThree(sThree);
+        addMarkerThree(sFour);
+        addMarkerThree(sFive);
+      }
+
+// Adds a marker to the map and push to the array.
+function addMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+    icon: {
+      url: "https://pbs.twimg.com/media/ECV2P80WsAIvZ-y?format=png&name=900x900",
+      scaledSize: new google.maps.Size(60, 60)
+      }
+  });
+  markers.push(marker);
+}
+
+function Info(){
+    var hs = document.getElementById('infoOne');
+    if(hs.style.display == 'none')
+      hs.style.display = 'block';
+    else
+      hs.style.display = 'none';
+    }
+
+function InfoTwo(){
+    var w = document.getElementById('infoTwo');
+    if(w.style.display == 'none')
+      w.style.display = 'block';
+    else
+      w.style.display = 'none';
+}
+
+function InfoThree(){
+    var s = document.getElementById('infoThree');
+    if(s.style.display == 'none')
+      s.style.display = 'block';
+    else
+      s.style.display = 'none';
+  }
+
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  clearMarkersTwo();
+  clearMarkersThree();
+  setMapOnAll(map);
+  Info();
+}
+
+
+function showAll(){
+  setMapOnAll(map);
+  setMapOnAllTwo(map);
+  Info();
+  InfoTwo();
+  InfoThree();
+}
+// Adds a marker to the map and push to the array.
+function addMarkerTwo(location) {
+  var markerTwo = new google.maps.Marker({
+    position: location,
+    map: map,
+    icon: {
+      url: "https://pbs.twimg.com/media/ECV2P9OX4AUfZv2?format=png&name=900x900",
+      scaledSize: new google.maps.Size(60, 60)
+      }
+  });
+  markersTwo.push(markerTwo);
+}
+
+// Sets the map on all markers in the array.
+function setMapOnAllTwo(map) {
+  for (var i = 0; i < markersTwo.length; i++) {
+    markersTwo[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkersTwo() {
+  setMapOnAllTwo(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkersTwo() {
+  clearMarkers();
+  clearMarkersThree();
+  setMapOnAllTwo(map);
+  InfoTwo();
+}
+
+
+// Adds a marker to the map and push to the array.
+function addMarkerThree(location) {
+  var markerthree = new google.maps.Marker({
+    position: location,
+    map: map,
+    icon: {
+      url: "https://pbs.twimg.com/media/ECV2P9cXUAEP-H2?format=png&name=900x900",
+      scaledSize: new google.maps.Size(60, 60)
+      }
+  });
+  markersThree.push(markerthree);
+}
+
+// Sets the map on all markers in the array.
+function setMapOnAllThree(map) {
+  for (var i = 0; i < markersThree.length; i++) {
+    markersThree[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkersThree() {
+  setMapOnAllThree(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkersThree() {
+  clearMarkers();
+  clearMarkersTwo();
+  setMapOnAllThree(map);
+  InfoThree();
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOrqg9cysmnqub50U5w_3cZlgnxXaAHsE&callback=initMap">
+    </script>
+</html>

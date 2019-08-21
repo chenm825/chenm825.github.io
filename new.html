@@ -1,46 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <style>
-    body {
-      background-color: White;
-      font-family: 'Century Gothic';
-      font-size: 20px;
-      color: #008577;
-      margin: 35px
-    }
-    nav {
-      position:relative;
-      padding: 10px 20px 10px 20px;
-      text-align: right;
-      z-index:1;
-      background-color: White;
-      margin: 0 auto;
-      width: calc(100%-60px);
-      font-family: 'Century Gothic';
-      position: sticky;
-      top: 0;
-    }
-    .menuArea li {
-      list-style: none;
-      display: inline-block;
-      font-family: 'Century Gothic';
-      margin: auto;
-    }
-    .menuArea li a {
-      text-decoration: none;
-      color: White;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      display: block;
-      padding: 0 25px;
-      font-size: 14px;
-      line-height:30px;
-      position: relative;
-    }
-    .menuArea li a:hover {
-      background:Black;
-      color:#008577;
-    }
+
     h1 {
       text-align: center;
       color: #008577;
@@ -102,10 +62,10 @@
   <body>
     <nav id="uppp">
       <ul class="menuArea">
-        <li><a href="boom.html"style="color:#008577;"target="_blank">Map</a></li>
-        <li><a href="rights.html"style="color:#008577;"target="_blank">About Us</a></li>
-        <li><a href="new.html"style="color:#008577;"target="_blank">Rights</a></li>
-        <li><a href="organizations.html"style="color:#008577;"target="_blank">Organizations</a></li>
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/boom.html"style="color:#008577;"target="_blank">Map</a></li>
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/rights.html"style="color:#008577;"target="_blank">About Us</a></li>
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/new.html"style="color:#008577;"target="_blank">Rights</a></li>
+        <li><a href="file:///C:/Users/Prabha12/Desktop/HTML/organizations.html"style="color:#008577;"target="_blank">Organizations</a></li>
       </ul>
     </nav>
   <center>
@@ -316,7 +276,7 @@
   </body>
   <script>
   function smoothScrollingTo(target){
-    $('html,body').animate({scrollTop:$(target).offset().​top}, 500);
+    $('html,body').animate({scrollTop:$(target).offset().top}, 500);
   }
   $('a[href*=\\#]').on('click', function(event){
       event.preventDefault();
